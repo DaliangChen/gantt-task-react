@@ -86,7 +86,6 @@ export interface StylingOption
   ganttHeight?: number
   barCornerRadius?: number
   handleWidth?: number
-  fontFamily?: string
   fontSize?: string
   /**
    * How many of row width can be taken by task.
@@ -109,16 +108,13 @@ export interface StylingOption
   TooltipContent?: React.FC<{
     task: Task
     fontSize: string
-    fontFamily: string
   }>
   TaskListHeader?: React.FC<{
     headerHeight: number
-    fontFamily: string
     fontSize: string
   }>
   TaskListTable?: React.FC<{
     rowHeight: number
-    fontFamily: string
     fontSize: string
     tasks: Task[]
     selectedTaskId: string

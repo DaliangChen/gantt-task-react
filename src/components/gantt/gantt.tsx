@@ -41,7 +41,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   handleWidth = 8,
   timeStep = 300000,
   arrowColor = 'grey',
-  fontFamily = 'Arial, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue',
   fontSize = '14px',
   arrowIndent = 20,
   todayColor = 'rgba(252, 248, 227, 0.5)',
@@ -428,7 +427,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     dateSetup,
     headerHeight,
     columnWidth,
-    fontFamily,
     fontSize,
   }
   const barProps: TaskGanttContentProps = {
@@ -441,7 +439,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     columnWidth,
     arrowColor,
     timeStep,
-    fontFamily,
     fontSize,
     arrowIndent,
     svgWidth,
@@ -457,7 +454,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
 
   const tableProps: TaskListProps = {
     rowHeight,
-    fontFamily,
     fontSize,
     tasks: barTasks,
     headerHeight,
@@ -494,7 +490,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
             rowHeight={rowHeight}
             svgContainerHeight={svgContainerHeight}
             svgContainerWidth={svgContainerWidth}
-            fontFamily={fontFamily}
             fontSize={fontSize}
             scrollX={scrollX}
             scrollY={scrollY}

@@ -101,7 +101,6 @@ npm start
 | barCornerRadius            | number | Specifies the taskbar corner rounding.                                                         |
 | barFill                    | number | Specifies the taskbar occupation. Sets in percent from 0 to 100.                               |
 | handleWidth                | number | Specifies width the taskbar drag event control for start and end dates.                        |
-| fontFamily                 | string | Specifies the application font.                                                                |
 | fontSize                   | string | Specifies the application font size.                                                           |
 | barProgressColor           | string | Specifies the taskbar progress fill color globally.                                            |
 | barProgressSelectedColor   | string | Specifies the taskbar progress fill color globally on select.                                  |
@@ -114,9 +113,9 @@ npm start
 | TaskListHeader             |        | Specifies the task list Header view                                                            |
 | TaskListTable              |        | Specifies the task list Table view                                                             |
 
-- TooltipContent: [`React.FC<{ task: Task; fontSize: string; fontFamily: string; }>;`](https://github.com/MaTeMaTuK/gantt-task-react/blob/main/src/components/other/tooltip.tsx#L56)
-- TaskListHeader: `React.FC<{ headerHeight: number; fontFamily: string; fontSize: string;}>;`
-- TaskListTable: `React.FC<{ rowHeight: number; fontFamily: string; fontSize: string; tasks: Task[]; selectedTaskId: string; setSelectedTask: (taskId: string) => void; }>;`
+- TooltipContent: [`React.FC<{ task: Task; fontSize: string; }>;`](https://github.com/MaTeMaTuK/gantt-task-react/blob/main/src/components/other/tooltip.tsx#L56)
+- TaskListHeader: `React.FC<{ headerHeight: number; fontSize: string;}>;`
+- TaskListTable: `React.FC<{ rowHeight: number; fontSize: string; tasks: Task[]; selectedTaskId: string; setSelectedTask: (taskId: string) => void; }>;`
 
 ### Task
 

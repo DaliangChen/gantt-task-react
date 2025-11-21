@@ -4,7 +4,6 @@ import { Task } from '../../types/public-types'
 
 export type TaskListProps = {
   headerHeight: number
-  fontFamily: string
   fontSize: string
   rowHeight: number
   ganttHeight: number
@@ -17,12 +16,10 @@ export type TaskListProps = {
   onExpanderClick: (task: Task) => void
   TaskListHeader: React.FC<{
     headerHeight: number
-    fontFamily: string
     fontSize: string
   }>
   TaskListTable: React.FC<{
     rowHeight: number
-    fontFamily: string
     fontSize: string
     tasks: Task[]
     selectedTaskId: string
@@ -33,7 +30,6 @@ export type TaskListProps = {
 
 export const TaskList: React.FC<TaskListProps> = ({
   headerHeight,
-  fontFamily,
   fontSize,
   rowHeight,
   scrollY,
@@ -59,13 +55,11 @@ export const TaskList: React.FC<TaskListProps> = ({
 
   const headerProps = {
     headerHeight,
-    fontFamily,
     fontSize,
   }
   const selectedTaskId = selectedTask ? selectedTask.id : ''
   const tableProps = {
     rowHeight,
-    fontFamily,
     fontSize,
     tasks,
     selectedTaskId: selectedTaskId,

@@ -15,11 +15,9 @@ export type TooltipProps = {
   scrollY: number
   rowHeight: number
   fontSize: string
-  fontFamily: string
   TooltipContent: React.FC<{
     task: Task
     fontSize: string
-    fontFamily: string
   }>
 }
 export const Tooltip: React.FC<TooltipProps> = ({
@@ -31,7 +29,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
   scrollY,
   arrowIndent,
   fontSize,
-  fontFamily,
   headerHeight,
   taskListWidth,
   TooltipContent,
@@ -96,7 +93,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         : styles.tooltipDetailsContainerHidden}
       style={{ left: relatedX, top: relatedY }}
     >
-      <TooltipContent task={task} fontSize={fontSize} fontFamily={fontFamily} />
+      <TooltipContent task={task} fontSize={fontSize} />
     </div>
   )
 }
@@ -104,20 +101,18 @@ export const Tooltip: React.FC<TooltipProps> = ({
 export const StandardTooltipContent: React.FC<{
   task: Task
   fontSize: string
-  fontFamily: string
-}> = ({ task, fontSize, fontFamily }) =>
+}> = ({ task, fontSize }) =>
 {
   const style = {
     fontSize,
-    fontFamily,
   }
   return (
     <div className={styles.tooltipDefaultContainer} style={style}>
-      <b style={{ fontSize: fontSize + 6 }}>
+      <p>
         {`${task.name}: ${task.start.getDate()}-${task.start.getMonth() + 1}-${task.start.getFullYear()} - ${task.end.getDate()}-${
           task.end.getMonth() + 1
         }-${task.end.getFullYear()}`}
-      </b>
+      </p>
       {task.end.getTime() - task.start.getTime() !== 0 && (
         <p className={styles.tooltipDefaultContainerParagraph}>
           {`Duration: ${~~(

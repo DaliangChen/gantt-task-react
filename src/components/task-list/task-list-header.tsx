@@ -3,15 +3,13 @@ import styles from './task-list-header.module.css'
 
 export const TaskListHeaderDefault: React.FC<{
   headerHeight: number
-  fontFamily: string
   fontSize: string
-}> = ({ headerHeight, fontFamily, fontSize }) =>
+}> = ({ headerHeight, fontSize }) =>
 {
   return (
     <div
       className={styles.ganttTable}
       style={{
-        fontFamily: fontFamily,
         fontSize: fontSize,
       }}
     >

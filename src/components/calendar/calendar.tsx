@@ -9,7 +9,6 @@ export type CalendarProps = {
   dateSetup: DateSetup
   headerHeight: number
   columnWidth: number
-  fontFamily: string
   fontSize: string
 }
 
@@ -17,7 +16,6 @@ export const Calendar: React.FC<CalendarProps> = ({
   dateSetup,
   headerHeight,
   columnWidth,
-  fontFamily,
   fontSize,
 }) =>
 {
@@ -129,7 +127,6 @@ export const Calendar: React.FC<CalendarProps> = ({
           y={headerHeight * 0.8}
           x={columnWidth * i}
           className={styles.calendarBottomText}
-          fontFamily={fontFamily}
         >
           {bottomValue}
         </text>,
@@ -170,7 +167,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       ;[topValues, bottomValues] = getCalendarValuesForHour()
   }
   return (
-    <g className='calendar' fontSize={fontSize} fontFamily={fontFamily}>
+    <g className='calendar' fontSize={fontSize}>
       <rect
         x={0}
         y={0}

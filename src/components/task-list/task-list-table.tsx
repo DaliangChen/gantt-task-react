@@ -5,7 +5,6 @@ import styles from './task-list-table.module.css'
 
 export const TaskListTableDefault: React.FC<{
   rowHeight: number
-  fontFamily: string
   fontSize: string
   tasks: Task[]
   selectedTaskId: string
@@ -14,7 +13,6 @@ export const TaskListTableDefault: React.FC<{
 }> = ({
   rowHeight,
   tasks,
-  fontFamily,
   fontSize,
   onExpanderClick,
 }) =>
@@ -23,7 +21,6 @@ export const TaskListTableDefault: React.FC<{
     <div
       className={styles.taskListWrapper}
       style={{
-        fontFamily: fontFamily,
         fontSize: fontSize,
       }}
     >
