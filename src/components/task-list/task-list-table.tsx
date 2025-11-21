@@ -1,20 +1,7 @@
 import dayjs from 'dayjs'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { Task } from '../../types/public-types'
 import styles from './task-list-table.module.css'
-
-const localeDateStringCache: Record<string, string> = {}
-const toLocaleDateStringFactory = () => (date: Date) =>
-{
-  const key = date.toString()
-  let lds = localeDateStringCache[key]
-  if (!lds)
-  {
-    lds = dayjs(date).format('YY-MM-DD')
-    localeDateStringCache[key] = lds
-  }
-  return lds
-}
 
 export const TaskListTableDefault: React.FC<{
   rowHeight: number
@@ -33,11 +20,6 @@ export const TaskListTableDefault: React.FC<{
   onExpanderClick,
 }) =>
 {
-  const toLocaleDateString = useMemo(
-    () => toLocaleDateStringFactory(),
-    [],
-  )
-
   return (
     <div
       className={styles.taskListWrapper}
@@ -90,7 +72,7 @@ export const TaskListTableDefault: React.FC<{
                 maxWidth: 90,
               }}
             >
-              &nbsp;{toLocaleDateString(t.start)}
+              &nbsp;{dayjs(t.start).format('YY-MM-DD')}
             </div>
             <div
               className={styles.taskListCell}
@@ -99,7 +81,7 @@ export const TaskListTableDefault: React.FC<{
                 maxWidth: 90,
               }}
             >
-              &nbsp;{toLocaleDateString(t.end)}
+              &nbsp;{dayjs(t.end).format('YY-MM-DD')}
             </div>
           </div>
         )

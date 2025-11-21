@@ -89,8 +89,6 @@ npm start
 | viewMode       | enum    | Specifies the time scale. Hour, Quarter Day, Half Day, Day, Week(ISO-8601, 1st day is Monday), Month, QuarterYear, Year. |
 | viewDate       | date    | Specifies display date and time for display.                                                                |
 | preStepsCount  | number  | Specifies empty space before the fist task                                                                  |
-| locale         | string  | Specifies the month name language. Able formats: ISO 639-2, Java Locale.                                    |
-| rtl            | boolean | Sets rtl mode.                                                                                              |
 
 ### StylingOption
 
@@ -119,7 +117,7 @@ npm start
 
 - TooltipContent: [`React.FC<{ task: Task; fontSize: string; fontFamily: string; }>;`](https://github.com/MaTeMaTuK/gantt-task-react/blob/main/src/components/other/tooltip.tsx#L56)
 - TaskListHeader: `React.FC<{ headerHeight: number; rowWidth: string; fontFamily: string; fontSize: string;}>;`
-- TaskListTable: `React.FC<{ rowHeight: number; rowWidth: string; fontFamily: string; fontSize: string; locale: string; tasks: Task[]; selectedTaskId: string; setSelectedTask: (taskId: string) => void; }>;`
+- TaskListTable: `React.FC<{ rowHeight: number; rowWidth: string; fontFamily: string; fontSize: string; tasks: Task[]; selectedTaskId: string; setSelectedTask: (taskId: string) => void; }>;`
 
 ### Task
 

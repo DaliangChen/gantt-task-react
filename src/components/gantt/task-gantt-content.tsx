@@ -26,7 +26,6 @@ export type TaskGanttContentProps = {
   arrowIndent: number;
   fontSize: string;
   fontFamily: string;
-  rtl: boolean;
   setGanttEvent: (value: GanttEvent) => void;
   setFailedTask: (value: BarTask | null) => void;
   setSelectedTask: (taskId: string) => void;
@@ -46,7 +45,6 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
   arrowIndent,
   fontFamily,
   fontSize,
-  rtl,
   setGanttEvent,
   setFailedTask,
   setSelectedTask,
@@ -89,7 +87,6 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
         xStep,
         timeStep,
         initEventX1Delta,
-        rtl
       );
       if (isChanged) {
         setGanttEvent({ action: ganttEvent.action, changedTask });
@@ -113,7 +110,6 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
         xStep,
         timeStep,
         initEventX1Delta,
-        rtl
       );
 
       const isNotLikeOriginal =
@@ -187,7 +183,6 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
     svg,
     isMoving,
     point,
-    rtl,
     setFailedTask,
     setGanttEvent,
   ]);
@@ -273,7 +268,6 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
                 rowHeight={rowHeight}
                 taskHeight={taskHeight}
                 arrowIndent={arrowIndent}
-                rtl={rtl}
               />
             );
           });
@@ -292,7 +286,6 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
               onEventStart={handleBarEventStart}
               key={task.id}
               isSelected={!!selectedTask && task.id === selectedTask.id}
-              rtl={rtl}
             />
           );
         })}
