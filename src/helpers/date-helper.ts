@@ -1,6 +1,4 @@
 import { Task, ViewMode } from '../types/public-types'
-import DateTimeFormatOptions = Intl.DateTimeFormatOptions
-import DateTimeFormat = Intl.DateTimeFormat
 
 type DateHelperScales =
   | 'year'
@@ -10,22 +8,6 @@ type DateHelperScales =
   | 'minute'
   | 'second'
   | 'millisecond'
-
-const intlDTCache: { [key: string]: DateTimeFormat } = {}
-export const getCachedDateTimeFormat = (
-  locString: string | string[],
-  opts: DateTimeFormatOptions = {},
-): DateTimeFormat =>
-{
-  const key = JSON.stringify([locString, opts])
-  let dtf = intlDTCache[key]
-  if (!dtf)
-  {
-    dtf = new Intl.DateTimeFormat(locString, opts)
-    intlDTCache[key] = dtf
-  }
-  return dtf
-}
 
 export const addToDate = (
   date: Date,
@@ -142,37 +124,4 @@ export const seedDates = (
     dates.push(currentDate)
   }
   return dates
-}
-
-export const getLocaleMonth = (date: Date, locale: string) =>
-{
-  let bottomValue = getCachedDateTimeFormat(locale, {
-    month: 'long',
-  }).format(date)
-  bottomValue = bottomValue.replace(
-    bottomValue[0],
-    bottomValue[0].toLocaleUpperCase(),
-  )
-  return bottomValue
-}
-
-export const getLocalDayOfWeek = (
-  date: Date,
-  locale: string,
-  format?: 'long' | 'short' | 'narrow' | undefined,
-) =>
-{
-  let bottomValue = getCachedDateTimeFormat(locale, {
-    weekday: format,
-  }).format(date)
-  bottomValue = bottomValue.replace(
-    bottomValue[0],
-    bottomValue[0].toLocaleUpperCase(),
-  )
-  return bottomValue
-}
-
-export const getDaysInMonth = (month: number, year: number) =>
-{
-  return new Date(year, month + 1, 0).getDate()
 }

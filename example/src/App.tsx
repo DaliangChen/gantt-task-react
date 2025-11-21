@@ -9,7 +9,6 @@ const App = () =>
 {
   const [view, setView] = React.useState<ViewMode>(ViewMode.Day)
   const [tasks, setTasks] = React.useState<Task[]>(initTasks())
-  const [isChecked, setIsChecked] = React.useState(true)
   let columnWidth = 65
   if (view === ViewMode.Month)
   {
@@ -77,8 +76,6 @@ const App = () =>
     <div className='Wrapper'>
       <ViewSwitcher
         onViewModeChange={viewMode => setView(viewMode)}
-        onViewListChange={setIsChecked}
-        isChecked={isChecked}
       />
       <h3>Gantt With Unlimited Height</h3>
       <Gantt
@@ -91,7 +88,6 @@ const App = () =>
         onClick={handleClick}
         onSelect={handleSelect}
         onExpanderClick={handleExpanderClick}
-        listCellWidth={isChecked ? '155px' : ''}
         columnWidth={columnWidth}
       />
       <h3>Gantt With Limited Height</h3>
@@ -105,7 +101,6 @@ const App = () =>
         onClick={handleClick}
         onSelect={handleSelect}
         onExpanderClick={handleExpanderClick}
-        listCellWidth={isChecked ? '155px' : ''}
         ganttHeight={300}
         columnWidth={columnWidth}
       />

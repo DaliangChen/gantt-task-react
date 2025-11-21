@@ -97,7 +97,6 @@ npm start
 | headerHeight               | number | Specifies the header height.                                                                   |
 | ganttHeight                | number | Specifies the gantt chart height without header. Default is 0. It`s mean no height limitation. |
 | columnWidth                | number | Specifies the time period width.                                                               |
-| listCellWidth              | string | Specifies the task list cell width. Empty string is mean "no display".                         |
 | rowHeight                  | number | Specifies the task row height.                                                                 |
 | barCornerRadius            | number | Specifies the taskbar corner rounding.                                                         |
 | barFill                    | number | Specifies the taskbar occupation. Sets in percent from 0 to 100.                               |
@@ -116,8 +115,8 @@ npm start
 | TaskListTable              |        | Specifies the task list Table view                                                             |
 
 - TooltipContent: [`React.FC<{ task: Task; fontSize: string; fontFamily: string; }>;`](https://github.com/MaTeMaTuK/gantt-task-react/blob/main/src/components/other/tooltip.tsx#L56)
-- TaskListHeader: `React.FC<{ headerHeight: number; rowWidth: string; fontFamily: string; fontSize: string;}>;`
-- TaskListTable: `React.FC<{ rowHeight: number; rowWidth: string; fontFamily: string; fontSize: string; tasks: Task[]; selectedTaskId: string; setSelectedTask: (taskId: string) => void; }>;`
+- TaskListHeader: `React.FC<{ headerHeight: number; fontFamily: string; fontSize: string;}>;`
+- TaskListTable: `React.FC<{ rowHeight: number; fontFamily: string; fontSize: string; tasks: Task[]; selectedTaskId: string; setSelectedTask: (taskId: string) => void; }>;`
 
 ### Task
 

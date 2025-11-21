@@ -76,17 +76,12 @@ export interface DisplayOption
   viewMode?: ViewMode
   viewDate?: Date
   preStepsCount?: number
-  /**
-   * Specifies the month name language. Able formats: ISO 639-2, Java Locale
-   */
-  locale?: string
 }
 
 export interface StylingOption
 {
   headerHeight?: number
   columnWidth?: number
-  listCellWidth?: string
   rowHeight?: number
   ganttHeight?: number
   barCornerRadius?: number
@@ -118,16 +113,13 @@ export interface StylingOption
   }>
   TaskListHeader?: React.FC<{
     headerHeight: number
-    rowWidth: string
     fontFamily: string
     fontSize: string
   }>
   TaskListTable?: React.FC<{
     rowHeight: number
-    rowWidth: string
     fontFamily: string
     fontSize: string
-    locale: string
     tasks: Task[]
     selectedTaskId: string
     /**

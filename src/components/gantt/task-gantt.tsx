@@ -1,17 +1,17 @@
-import React, { useRef, useEffect } from "react";
-import { GridProps, Grid } from "../grid/grid";
-import { CalendarProps, Calendar } from "../calendar/calendar";
-import { TaskGanttContentProps, TaskGanttContent } from "./task-gantt-content";
-import styles from "./gantt.module.css";
+import React, { useEffect, useRef } from 'react'
+import { Calendar, CalendarProps } from '../calendar/calendar'
+import { Grid, GridProps } from '../grid/grid'
+import styles from './gantt.module.css'
+import { TaskGanttContent, TaskGanttContentProps } from './task-gantt-content'
 
 export type TaskGanttProps = {
-  gridProps: GridProps;
-  calendarProps: CalendarProps;
-  barProps: TaskGanttContentProps;
-  ganttHeight: number;
-  scrollY: number;
-  scrollX: number;
-};
+  gridProps: GridProps
+  calendarProps: CalendarProps
+  barProps: TaskGanttContentProps
+  ganttHeight: number
+  scrollY: number
+  scrollX: number
+}
 export const TaskGantt: React.FC<TaskGanttProps> = ({
   gridProps,
   calendarProps,
@@ -19,32 +19,37 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
   ganttHeight,
   scrollY,
   scrollX,
-}) => {
-  const ganttSVGRef = useRef<SVGSVGElement>(null);
-  const horizontalContainerRef = useRef<HTMLDivElement>(null);
-  const verticalGanttContainerRef = useRef<HTMLDivElement>(null);
-  const newBarProps = { ...barProps, svg: ganttSVGRef };
+}) =>
+{
+  const ganttSVGRef = useRef<SVGSVGElement>(null)
+  const horizontalContainerRef = useRef<HTMLDivElement>(null)
+  const verticalGanttContainerRef = useRef<HTMLDivElement>(null)
+  const newBarProps = { ...barProps, svg: ganttSVGRef }
 
-  useEffect(() => {
-    if (horizontalContainerRef.current) {
-      horizontalContainerRef.current.scrollTop = scrollY;
+  useEffect(() =>
+  {
+    if (horizontalContainerRef.current)
+    {
+      horizontalContainerRef.current.scrollTop = scrollY
     }
-  }, [scrollY]);
+  }, [scrollY])
 
-  useEffect(() => {
-    if (verticalGanttContainerRef.current) {
-      verticalGanttContainerRef.current.scrollLeft = scrollX;
+  useEffect(() =>
+  {
+    if (verticalGanttContainerRef.current)
+    {
+      verticalGanttContainerRef.current.scrollLeft = scrollX
     }
-  }, [scrollX]);
+  }, [scrollX])
 
   return (
     <div
       className={styles.ganttVerticalContainer}
       ref={verticalGanttContainerRef}
-      dir="ltr"
+      dir='ltr'
     >
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns='http://www.w3.org/2000/svg'
         width={gridProps.svgWidth}
         height={calendarProps.headerHeight}
         fontFamily={barProps.fontFamily}
@@ -54,14 +59,12 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
       <div
         ref={horizontalContainerRef}
         className={styles.horizontalContainer}
-        style={
-          ganttHeight
-            ? { height: ganttHeight, width: gridProps.svgWidth }
-            : { width: gridProps.svgWidth }
-        }
+        style={ganttHeight
+          ? { height: ganttHeight, width: gridProps.svgWidth }
+          : { width: gridProps.svgWidth }}
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns='http://www.w3.org/2000/svg'
           width={gridProps.svgWidth}
           height={barProps.rowHeight * barProps.tasks.length}
           fontFamily={barProps.fontFamily}
@@ -72,5 +75,5 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
         </svg>
       </div>
     </div>
-  );
-};
+  )
+}

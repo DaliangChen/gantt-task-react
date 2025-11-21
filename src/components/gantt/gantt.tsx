@@ -22,12 +22,10 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   tasks,
   headerHeight = 50,
   columnWidth = 60,
-  listCellWidth = '155px',
   rowHeight = 50,
   ganttHeight = 0,
   viewMode = ViewMode.Day,
   preStepsCount = 1,
-  locale = 'en-GB',
   barFill = 60,
   barCornerRadius = 3,
   barProgressColor = '#a3a3ff',
@@ -231,15 +229,11 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
 
   useEffect(() =>
   {
-    if (!listCellWidth)
-    {
-      setTaskListWidth(0)
-    }
     if (taskListRef.current)
     {
       setTaskListWidth(taskListRef.current.offsetWidth)
     }
-  }, [taskListRef, listCellWidth])
+  }, [taskListRef])
 
   useEffect(() =>
   {
@@ -432,7 +426,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   }
   const calendarProps: CalendarProps = {
     dateSetup,
-    locale,
     headerHeight,
     columnWidth,
     fontFamily,
@@ -464,11 +457,9 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
 
   const tableProps: TaskListProps = {
     rowHeight,
-    rowWidth: listCellWidth,
     fontFamily,
     fontSize,
     tasks: barTasks,
-    locale,
     headerHeight,
     scrollY,
     ganttHeight,
@@ -488,7 +479,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
         tabIndex={0}
         ref={wrapperRef}
       >
-        {listCellWidth && <TaskList {...tableProps} />}
+        <TaskList {...tableProps} />
         <TaskGantt
           gridProps={gridProps}
           calendarProps={calendarProps}

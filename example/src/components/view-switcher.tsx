@@ -2,14 +2,10 @@ import React from 'react'
 import 'gantt-task-react/dist/index.css'
 import { ViewMode } from 'gantt-task-react'
 type ViewSwitcherProps = {
-  isChecked: boolean
-  onViewListChange: (isChecked: boolean) => void
   onViewModeChange: (viewMode: ViewMode) => void
 }
 export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
   onViewModeChange,
-  onViewListChange,
-  isChecked,
 }) =>
 {
   return (
@@ -29,17 +25,6 @@ export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
       >
         Month
       </button>
-      <div className='Switch'>
-        <label className='Switch_Toggle'>
-          <input
-            type='checkbox'
-            defaultChecked={isChecked}
-            onClick={() => onViewListChange(!isChecked)}
-          />
-          <span className='Slider' />
-        </label>
-        Show Task List
-      </div>
     </div>
   )
 }

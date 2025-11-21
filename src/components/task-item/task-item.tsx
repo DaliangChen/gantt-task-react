@@ -55,7 +55,7 @@ export const TaskItem: React.FC<TaskItemProps> = props =>
         setTaskItem(<Bar {...props} />)
         break
     }
-  }, [task, isSelected])
+  }, [task, isSelected, props])
 
   useEffect(() =>
   {

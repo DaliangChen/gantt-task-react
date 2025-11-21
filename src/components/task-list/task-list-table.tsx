@@ -7,7 +7,6 @@ export const TaskListTableDefault: React.FC<{
   rowHeight: number
   fontFamily: string
   fontSize: string
-  locale: string
   tasks: Task[]
   selectedTaskId: string
   setSelectedTask: (taskId: string) => void

@@ -1,5 +1,5 @@
+import dayjs from 'dayjs'
 import React, { ReactNode } from 'react'
-import { getCachedDateTimeFormat, getDaysInMonth, getLocalDayOfWeek, getLocaleMonth } from '../../helpers/date-helper'
 import { DateSetup } from '../../types/date-setup'
 import { ViewMode } from '../../types/public-types'
 import styles from './calendar.module.css'
@@ -7,7 +7,6 @@ import { TopPartOfCalendar } from './top-part-of-calendar'
 
 export type CalendarProps = {
   dateSetup: DateSetup
-  locale: string
   headerHeight: number
   columnWidth: number
   fontFamily: string
@@ -16,7 +15,6 @@ export type CalendarProps = {
 
 export const Calendar: React.FC<CalendarProps> = ({
   dateSetup,
-  locale,
   headerHeight,
   columnWidth,
   fontFamily,
@@ -31,7 +29,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     for (let i = 0; i < dateSetup.dates.length; i++)
     {
       const date = dateSetup.dates[i]
-      const bottomValue = getLocaleMonth(date, locale)
+      const bottomValue = dayjs(date).format('MM')
       bottomValues.push(
         <text
           key={bottomValue + date.getFullYear()}
@@ -76,7 +74,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     for (let i = 0; i < dates.length; i++)
     {
       const date = dates[i]
-      const bottomValue = `${getLocalDayOfWeek(date, locale, 'short')}, ${date.getDate().toString()}`
+      const bottomValue = dayjs(date).format('DD')
 
       bottomValues.push(
         <text
@@ -93,7 +91,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         && date.getMonth() !== dates[i + 1].getMonth()
       )
       {
-        const topValue = getLocaleMonth(date, locale)
+        const topValue = dayjs(date).format('YY-MM')
 
         topValues.push(
           <TopPartOfCalendar
@@ -103,7 +101,7 @@ export const Calendar: React.FC<CalendarProps> = ({
             y1Line={0}
             y2Line={topDefaultHeight}
             xText={columnWidth * (i + 1)
-              - getDaysInMonth(date.getMonth(), date.getFullYear())
+              - dayjs(date).daysInMonth()
                 * columnWidth
                 * 0.5}
             yText={topDefaultHeight * 0.9}
@@ -123,9 +121,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     for (let i = 0; i < dates.length; i++)
     {
       const date = dates[i]
-      const bottomValue = getCachedDateTimeFormat(locale, {
-        hour: 'numeric',
-      }).format(date)
+      const bottomValue = dayjs(date).format('HH')
 
       bottomValues.push(
         <text
@@ -141,13 +137,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       if (i !== 0 && date.getDate() !== dates[i - 1].getDate())
       {
         const displayDate = dates[i - 1]
-        const topValue = `${
-          getLocalDayOfWeek(
-            displayDate,
-            locale,
-            'long',
-          )
-        }, ${displayDate.getDate()} ${getLocaleMonth(displayDate, locale)}`
+        const topValue = dayjs(displayDate).format('YY-MM-DD')
         const topPosition = (date.getHours() - 24) / 2
         topValues.push(
           <TopPartOfCalendar
